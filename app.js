@@ -27,9 +27,9 @@ const listingRoute= require("./routes/listing.js");
 const reviewRoute = require("./routes/review.js");
 const userRoute = require("./routes/user.js");
 
-// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const dbUrl = "mongodb://127.0.0.1:27017/wanderlust";
 
-const dbUrl = process.env.ATLASBD_URL;
+// const  = process.env.ATLASBD_URL;
 
 main().then(() => {
     console.log("Connected to DB");
@@ -70,9 +70,12 @@ app.use(express.static(path.join(__dirname,"/public")));;
     },
  };
 
+ app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "lannding.html"));
+  });
 
 //  app.get("/", (req, res) => {
-//     res.send("Hi, I am root");
+//     res.render("lannding.ejs");
 // });
 
  app.use(session(sessionOptions));
